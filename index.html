@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook-P2-M03</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .section-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: right;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        .time-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            // Mostrar todas las actividades para 50 minutos
+            document.getElementById('activity-2').style.display = 'block';
+            document.getElementById('activity-8-step-1').style.display = 'block';
+            document.getElementById('activity-8-step-2').style.display = 'block';
+
+            // Ajustes para 45 minutos
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            }
+
+            // Ajustes para 40 minutos
+            if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-8-step-1').style.display = 'none';
+                document.getElementById('activity-8-step-2').style.display = 'none';
+            }
+        }
+
+        function navigateTo(id) {
+            var element = document.getElementById(id);
+            window.scrollTo({
+                top: element.offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</head>
+<body onload="updateActivities()">
+
+<div class="header">
+    <h1>Playbook-P2-M03</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+<!-- Actividad 0: Revisión Misión -->
+<div id="activity-0" class="activity">
+    <div class="banner" onclick="toggleContent('mission_review')">
+        <div class="title">
+            <span>📝 Actividad 0: Revisión Misión</span>
+            <span>⏰ Tiempo: 0.5 minutos</span>
+        </div>
+        <div class="subtitle">Verificación de materiales y preparación</div>
+        <div class="summary">Proyectar diapositiva 1 "Revisión misión" para asegurarse de que los materiales estén listos.</div>
+    </div>
+    <div id="mission_review" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1: Proyectar diapositiva 1 "Revisión misión".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">N/A</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 1: Saludo y Ritual Gnius Club -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('gnius_club_welcome')">
+        <div class="title">
+            <span>👋 Actividad 1: Saludo y Ritual Gnius Club</span>
+            <span>⏰ Tiempo: 3 minutos</span>
+        </div>
+        <div class="subtitle">Bienvenida y preparación para la misión</div>
+        <div class="summary">Realización del saludo, revisión del estado de ánimo y presentación de los objetivos del día.</div>
+    </div>
+    <div id="gnius_club_welcome" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar la Diapositiva 2 "Gnius Club".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¡Buenos días, jóvenes narradores! Hoy tenemos una misión emocionante. Vamos a explorar cómo desarrollar la trama de nuestras historias. ¿Están listos para comenzar?"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar la Diapositiva 3 "¿Cómo están?" y escanear cómo se sienten los estudiantes.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Antes de empezar, me gustaría saber cómo están. Si se sienten emocionados por desarrollar sus historias, levanten una mano. Si necesitan un poco de inspiración, crucen los brazos."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Proyectar la Diapositiva 4 "Gracias por Asistir".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Vamos a juntar nuestras manos en agradecimiento por la oportunidad de aprender algo nuevo hoy. ¡Gracias por estar aquí!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (0.5 minutos): Proyectar la Diapositiva 5 "Objetivos de la Misión".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Hoy tenemos tres objetivos: Entender qué es una trama, aprender cómo construirla y practicar creando una pequeña trama juntos. ¡Vamos a divertirnos aprendiendo!"</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 2: Innovación del Día -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('innovation_day')">
+        <div class="title">
+            <span>💡 Actividad 2: Innovación del Día</span>
+            <span>⏰ Tiempo: 4 minutos</span>
+        </div>
+        <div class="subtitle">Exploración de cómo las películas interactivas están transformando las historias</div>
+        <div class="summary">Presentación de un video sobre películas interactivas y reflexión sobre su impacto en la narrativa.</div>
+    </div>
+    <div id="innovation_day" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (1 minuto): Proyectar la Diapositiva 6 "Innovación del Día".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Hoy vamos a explorar cómo las películas interactivas están cambiando la manera en que experimentamos las historias. ¡Esta innovación les permitirá crear su propia versión de la historia!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar el video y guiar a los estudiantes en la reflexión.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"En 'Black Mirror: Bandersnatch', los espectadores pueden elegir lo que los personajes harán a continuación, cambiando así el curso de la historia. ¡Es como ser el narrador de tu propia aventura!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Proyectar la Diapositiva 8 "Impacto de la Innovación".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Con películas interactivas como 'Bandersnatch', cada elección que hacemos puede cambiar el final de la historia. Esto nos permite explorar diferentes caminos y finales posibles, haciéndonos parte de la trama."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (1 minuto): Proyectar la Diapositiva 9 "Reflexión".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¿Qué tal si en nuestras historias también dejamos que los lectores o espectadores elijan lo que sucede a continuación? ¡Imagina todas las posibilidades que podrías crear!"</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 3: Brain Gym -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('brain_gym')">
+        <div class="title">
+            <span>🧠 Actividad 3: Brain Gym</span>
+            <span>⏰ Tiempo: 12 minutos</span>
+        </div>
+        <div class="subtitle">Ejercicios para activar la mente y aprender sobre las tramas</div>
+        <div class="summary">Explicación de qué es una trama, tipos de tramas, y desarrollo de los elementos clave de una historia.</div>
+    </div>
+    <div id="brain_gym" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar la diapositiva 10 "Bienvenidos al Brain Gym". Introducir el ejercicio y anunciar la presencia de un Easter Egg.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Antes de empezar a desarrollar nuestras propias tramas, vamos a ejercitar nuestros cerebros. Recuerden, dentro de lo que voy a explicar, hay un Easter Egg. Al final de la clase voy a hacer una pregunta, y quien la responda correctamente ganará un Mon-e. ¡Presten mucha atención!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar la diapositiva 11 "¿Qué es una Trama?". Explicar que una trama es la secuencia de eventos que suceden en una historia y cómo estos eventos están conectados.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"La trama es la columna vertebral de cualquier historia. Es el orden en que suceden los eventos en un cuento, desde el principio hasta el final."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Proyectar la diapositiva 12 "Tipos de Tramas". Explicar los diferentes tipos de tramas, como la Trama de Superación o Aventura.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Existen varios tipos de tramas: la trama de superación, donde un personaje debe superar obstáculos; la trama de aventura, donde los personajes exploran nuevos mundos o desafíos; y la trama del viaje del héroe, donde un personaje pasa por transformaciones personales."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (1 minuto): Proyectar la diapositiva 13 "Elementos de una Trama". Explicar los cinco componentes clave de una trama.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Hoy aprenderemos a crear una trama increíble para nuestras historias. Vamos a hablar de los cinco componentes básicos: Personajes, Escenario, Conflicto, Clímax y Resolución."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 5 (1 minuto): Proyectar la diapositiva 14 "Presentación de Personajes". Preguntar a los estudiantes qué tipos de personajes incluirían en su historia.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Piensen en los personajes de su historia. ¿Quiénes son? ¿Qué los motiva? ¿Qué quieren lograr? Vamos a ver algunos ejemplos de personajes que podríamos crear juntos."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 6 (1 minuto): Proyectar la diapositiva 15 "Creación del Escenario". Preguntar a los estudiantes dónde se desarrolla la historia.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"El escenario es crucial para que la historia se sienta real. Puede ser un lugar mágico o un lugar común. ¿Dónde creen que podrían vivir los personajes que mencionamos?"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 7 (1 minuto): Proyectar la diapositiva 16 "El Conflicto". Explicar la importancia del conflicto para la trama.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Toda historia necesita un conflicto o problema que los personajes deben resolver. ¿Qué dificultades enfrentan tus personajes? ¿Cómo cambiarán después de resolver el problema?"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 8 (1 minuto): Proyectar la diapositiva 17 "El Clímax". Pedir a los estudiantes que imaginen el punto más emocionante de la historia.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"El clímax es el punto más emocionante de la historia, el momento en el que todo llega a su máximo. ¿Qué pasará en este momento crucial en tu historia?"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 9 (1 minuto): Proyectar la diapositiva 18 "La Resolución". Pedir a los estudiantes que piensen en cómo terminará la historia.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Finalmente, tenemos la resolución. ¿Cómo se resolverán los problemas de los personajes? Este es el final de la trama."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 10 (1 minuto): Proyectar Diapositiva 19 "Ejemplo de Tramas".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Vamos a ver algunos ejemplos de tramas famosas. En 'Caperucita Roja', la trama sigue un curso lineal con un conflicto claro: el encuentro con el lobo."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 11 (1 minuto): Proyectar Diapositiva 20 "Reflexión".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¿Pueden pensar en otra historia que tenga un giro inesperado? ¿Qué tipo de trama les parece más interesante?"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 12 (1 minuto): Proyectar Diapositiva 21 "Resumen y Preparación".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Hemos aprendido sobre diferentes tipos de tramas y cómo se desarrollan. Ahora, vamos a aplicar lo que hemos aprendido y empezar a desarrollar nuestras propias historias."</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 4: State Change -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">
+            <span>🧘 Actividad 4: State Change</span>
+            <span>⏰ Tiempo: 1 minuto</span>
+        </div>
+        <div class="subtitle">Activación física para recargar energías</div>
+        <div class="summary">Ejercicios rápidos para despejar la mente y prepararse para la siguiente parte de la misión.</div>
+    </div>
+    <div id="state_change" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar la Diapositiva 22 "State Change".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¡Genios, ahora que conocemos mucho más sobre las tramas, vamos a hacer una rápida activación para despejar nuestras mentes y prepararnos para la siguiente parte de la misión! Vamos a sacudir las manos como si estuviéramos sacudiendo el polvo de una alfombra. ¡Vamos, sacudan bien!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (0.5 minutos): Guiar a los estudiantes en la activación física.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Ahora vamos a tomar una respiración profunda, sostener el aire por tres segundos, y exhalar mientras bajamos los brazos lentamente. Esto nos ayudará a concentrarnos y relajarnos."</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 5: Team Gnius -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">
+            <span>🤝 Actividad 5: Team Gnius</span>
+            <span>⏰ Tiempo: 2 minutos</span>
+        </div>
+        <div class="subtitle">Trabajo en equipo y colaboración</div>
+        <div class="summary">Formación de equipos y uso de herramientas para compartir las tramas creadas.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (1 minuto): Proyectar Diapositiva 23 "Team Gnius".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Ahora vamos a formar equipos de dos para compartir nuestras tramas. Tienen 30 segundos para decidir con quién van a trabajar. ¡Elijan a sus compañeros y prepárense para compartir sus historias!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar Diapositiva 24 "Magic Tablets".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Un miembro del equipo recogerá una Magic Tablet por cada integrante de su equipo, pase a recogerlas por favor."</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 6: Challenge -->
+<div id="activity-6" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">
+            <span>🏆 Actividad 6: Challenge</span>
+            <span>⏰ Tiempo: 15 minutos</span>
+        </div>
+        <div class="subtitle">Desafío creativo de creación de historias</div>
+        <div class="summary">Desarrollo de una trama siguiendo las pautas aprendidas en clase.</div>
+    </div>
+    <div id="challenge" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (1.5 minutos): Proyectar Diapositiva 25 "Desafío de Creación".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¡Es hora de poner en práctica lo que hemos aprendido! Ahora, quiero que cada uno de ustedes escoja un tipo de trama que les guste y comience a desarrollar su propia historia. Recuerden los elementos clave que discutimos: conflictos, giros, y resoluciones."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (10 minutos): Proyectar Diapositiva 26 "A crear".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Recuerden que no hay límites para su creatividad. ¡Diviértanse y dejen que sus ideas fluyan libremente!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (3 minutos): Proyectar Diapositiva 27 "Compartir y Mejorar".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Ahora que han trabajado en sus tramas, es momento de compartirlas con su compañero. Escuchen sus ideas y piensen en cómo podrían mejorar su historia. Elijan quién empieza a contar su historia y quién dará feedback, después cambiaremos de roles, tienen 3 minutos."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (3 minutos): Proyectar Diapositiva 28 "Cambio de rol".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Ahora cambien de roles."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 5 (0.5 minutos): Proyectar Diapositiva 29 "Objetivos alcanzados".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Genios, hemos hecho todos los objetivos de esta misión."</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 7: Easter Egg -->
+<div id="activity-7" class="activity">
+    <div class="banner" onclick="toggleContent('easter_egg')">
+        <div class="title">
+            <span>🥚 Actividad 7: Easter Egg</span>
+            <span>⏰ Tiempo: 4 minutos</span>
+        </div>
+        <div class="subtitle">Dinámica de preguntas con recompensa</div>
+        <div class="summary">Responder una pregunta relacionada con la clase para ganar Mon-e.</div>
+    </div>
+    <div id="easter_egg" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (1 minuto): Proyectar Diapositiva 30 "Easter Egg".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¡Es hora del Easter Egg! Les mencioné un dato curioso durante nuestra discusión. Las personas que sepan la respuesta correcta ganarán un Mon-e. ¿Listos?"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (2 minutos): Recoger las respuestas de los estudiantes que levantaron la mano.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¡Muy bien! Veamos quién sabe la respuesta. Recuerden, levanten la mano y no griten la respuesta, los seleccionaré y me la dirán al oído. Seleccionaré a tres Genios."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Proyectar Diapositiva 31 "Respuesta Correcta".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"La respuesta correcta es que 'Caperucita Roja' tiene más de 58 versiones diferentes. ¡Felicidades a los ganadores! Ahora saben un poco más sobre cómo las historias pueden cambiar con el tiempo."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (0.5 minutos): Agradecer a todos los estudiantes por participar.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¡Gran trabajo, Genios! Prestar atención a los detalles es lo que nos convierte en grandes narradores. ¡Sigan explorando y aprendiendo!"</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 8: Honor de Dojo -->
+<div id="activity-8" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">
+            <span>🏅 Actividad 8: Honor de Dojo</span>
+            <span>⏰ Tiempo: 4.5 minutos</span>
+        </div>
+        <div class="subtitle">Reflexión y cierre de la clase</div>
+        <div class="summary">Reflexión sobre lo aprendido y recogida de materiales.</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (2 minutos): Proyectar Diapositiva 32 "Reflexión y Feedback".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Genios, hoy hemos aprendido mucho sobre el desarrollo de tramas. ¡Estoy muy orgulloso de lo que han logrado! Tomemos un momento para reflexionar sobre lo que más les gustó y qué podrían mejorar la próxima vez."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (0.5 minutos): Felicitar a los Genios por completar la misión de hoy.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Estoy muy impresionado por cómo cada uno de ustedes ha trabajado hoy. ¡Han demostrado ser verdaderos Genios de la narración! ¡Celebremos estos logros juntos!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (2 minutos): Proyectar Diapositiva 33 "Honor de Dojo". Guiar a los estudiantes en la recolección de materiales y limpieza del área de trabajo.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Antes de terminar, vamos a asegurarnos de que nuestro espacio de trabajo quede limpio y ordenado. ¡Es importante respetar el lugar donde creamos grandes ideas!"</div>
+        </div>
+    </div>
+</div>
+</div> <!-- Cierre del container -->
+
+<!-- Scripts adicionales si es necesario -->
+<script>
+    // Agregar scripts adicionales aquí si es necesario
+</script>
+
+</body>
+</html>
